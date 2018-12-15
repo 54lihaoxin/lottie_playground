@@ -60,6 +60,9 @@ private extension SingleAnimationPlayerViewController {
         pan.minimumNumberOfTouches = 1
         pan.maximumNumberOfTouches = 1
         animationView.addGestureRecognizer(pan)
+        
+        // pinch
+        animationView.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(_:))))
     }
 }
 
@@ -83,5 +86,14 @@ private extension SingleAnimationPlayerViewController {
         let translation = pan.translation(in: view)
         panningView.transform = panningView.transform.translatedBy(x: translation.x, y: translation.y)
         pan.setTranslation(.zero, in: view)
+    }
+    
+    @objc func handlePinch(_ pinch: UIPinchGestureRecognizer) {
+        guard let pinchingView = pinch.view else {
+            assertionFailure("\(#function) pinching view is nil")
+            return
+        }
+        pinchingView.transform = pinchingView.transform.scaledBy(x: pinch.scale, y: pinch.scale)
+        pinch.scale = 1
     }
 }
