@@ -18,26 +18,13 @@ final class SingleAnimationPlayerViewController: UIViewController {
         v.loopAnimation = true
         v.play()
         
-        // tap
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
-        tap.delegate = self
-        v.addGestureRecognizer(tap)
-        
-        // pan
-        let pan = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
-        pan.delegate = self
-        v.addGestureRecognizer(pan)
-        
-        // pinch
-        let pinch = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(_:)))
-        pinch.delegate = self
-        v.addGestureRecognizer(pinch)
-        
-        // rotate
-        let rotate = UIRotationGestureRecognizer(target: self, action: #selector(handleRotate(_:)))
-        rotate.delegate = self
-        v.addGestureRecognizer(rotate)
-        
+        [UITapGestureRecognizer(target: self, action: #selector(handleTap(_:))),
+         UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:))),
+         UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(_:))),
+         UIRotationGestureRecognizer(target: self, action: #selector(handleRotate(_:)))].forEach {
+            $0.delegate = self
+            v.addGestureRecognizer($0)
+        }
         return v
     }()
     
