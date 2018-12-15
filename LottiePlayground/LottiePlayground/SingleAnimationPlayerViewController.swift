@@ -54,6 +54,10 @@ private extension SingleAnimationPlayerViewController {
         animationView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         animationView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         
+        // tap
+        animationView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap(_:))))
+        
+        // pan
         let pan = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
         pan.minimumNumberOfTouches = 1
         pan.maximumNumberOfTouches = 1
@@ -64,6 +68,14 @@ private extension SingleAnimationPlayerViewController {
 // MARK: - user interaction
 
 private extension SingleAnimationPlayerViewController {
+    
+    @objc func handleTap(_ tap: UITapGestureRecognizer) {
+        if animationView.isAnimationPlaying {
+            animationView.pause()
+        } else {
+            animationView.play()
+        }
+    }
     
     @objc func handlePan(_ pan: UIPanGestureRecognizer) {
         let translation = pan.translation(in: view)
