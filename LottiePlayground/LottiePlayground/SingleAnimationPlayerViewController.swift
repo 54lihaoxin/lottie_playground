@@ -17,6 +17,27 @@ final class SingleAnimationPlayerViewController: UIViewController {
         v.autoReverseAnimation = true
         v.loopAnimation = true
         v.play()
+        
+        // tap
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        tap.delegate = self
+        v.addGestureRecognizer(tap)
+        
+        // pan
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
+        pan.delegate = self
+        v.addGestureRecognizer(pan)
+        
+        // pinch
+        let pinch = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(_:)))
+        pinch.delegate = self
+        v.addGestureRecognizer(pinch)
+        
+        // rotate
+        let rotate = UIRotationGestureRecognizer(target: self, action: #selector(handleRotate(_:)))
+        rotate.delegate = self
+        v.addGestureRecognizer(rotate)
+        
         return v
     }()
     
@@ -32,6 +53,13 @@ final class SingleAnimationPlayerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
+    }
+}
+
+extension SingleAnimationPlayerViewController: UIGestureRecognizerDelegate {
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
 }
 
@@ -51,21 +79,6 @@ private extension SingleAnimationPlayerViewController {
         animationView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         animationView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         animationView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        
-        // tap
-        animationView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap(_:))))
-        
-        // pan
-        let pan = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
-        pan.minimumNumberOfTouches = 1
-        pan.maximumNumberOfTouches = 1
-        animationView.addGestureRecognizer(pan)
-        
-        // pinch
-        animationView.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(_:))))
-        
-        // rotate
-        animationView.addGestureRecognizer(UIRotationGestureRecognizer(target: self, action: #selector(handleRotate(_:))))
     }
 }
 
