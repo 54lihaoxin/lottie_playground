@@ -13,6 +13,7 @@
 		AC21141521C4B82800986674 /* FAQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC21141421C4B82800986674 /* FAQ.swift */; };
 		AC21141721C4B95B00986674 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC21141621C4B95B00986674 /* String+Extensions.swift */; };
 		AC21141921C4BAE500986674 /* StringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC21141821C4BAE500986674 /* StringTests.swift */; };
+		AC21141D21C57DFC00986674 /* MD Logo Animation.json in Resources */ = {isa = PBXBuildFile; fileRef = AC21141C21C57DFB00986674 /* MD Logo Animation.json */; };
 		AC508CC721C45B24007DB40E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC508CC621C45B24007DB40E /* AppDelegate.swift */; };
 		AC508CCC21C45B24007DB40E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC508CCA21C45B24007DB40E /* Main.storyboard */; };
 		AC508CCE21C45B28007DB40E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC508CCD21C45B28007DB40E /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 		AC21141421C4B82800986674 /* FAQ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQ.swift; sourceTree = "<group>"; };
 		AC21141621C4B95B00986674 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		AC21141821C4BAE500986674 /* StringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTests.swift; sourceTree = "<group>"; };
+		AC21141C21C57DFB00986674 /* MD Logo Animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "MD Logo Animation.json"; sourceTree = "<group>"; };
 		AC508CC321C45B24007DB40E /* LottiePlayground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LottiePlayground.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC508CC621C45B24007DB40E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC508CCB21C45B24007DB40E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -98,11 +100,20 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
+		AC21141B21C57DDE00986674 /* AnimationAssets */ = {
+			isa = PBXGroup;
+			children = (
+				AC21141C21C57DFB00986674 /* MD Logo Animation.json */,
+			);
+			path = AnimationAssets;
+			sourceTree = "<group>";
+		};
 		AC508CBA21C45B24007DB40E = {
 			isa = PBXGroup;
 			children = (
 				AC508CC521C45B24007DB40E /* LottiePlayground */,
 				AC508CDA21C45B28007DB40E /* LottiePlaygroundTests */,
+				AC21141B21C57DDE00986674 /* AnimationAssets */,
 				AC508CC421C45B24007DB40E /* Products */,
 				68E1C1B1B81551743016B22A /* Pods */,
 				3BD512882CEB46701035C299 /* Frameworks */,
@@ -226,6 +237,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC21141D21C57DFC00986674 /* MD Logo Animation.json in Resources */,
 				AC508CD121C45B28007DB40E /* LaunchScreen.storyboard in Resources */,
 				AC508CCE21C45B28007DB40E /* Assets.xcassets in Resources */,
 				AC508CCC21C45B24007DB40E /* Main.storyboard in Resources */,
