@@ -20,8 +20,6 @@ final class SingleAnimationPlayerViewController: UIViewController {
         return v
     }()
     
-    private var animationViewCenterAtBeginning = CGPoint.zero
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError()
     }
@@ -78,14 +76,12 @@ private extension SingleAnimationPlayerViewController {
     }
     
     @objc func handlePan(_ pan: UIPanGestureRecognizer) {
-        let translation = pan.translation(in: view)
-        switch pan.state {
-        case .began:
-            animationViewCenterAtBeginning = animationView.center
-        case .changed:
-            animationView.center = animationViewCenterAtBeginning.offsetting(by: translation)
-        case .cancelled, .ended, .failed, .possible:
-            animationViewCenterAtBeginning = .zero // this should actually does nothing, just for debugging
+        guard let panningView = pan.view else {
+            assertionFailure("\(#function) panning view is nil")
+            return
         }
+        let translation = pan.translation(in: view)
+        panningView.transform = panningView.transform.translatedBy(x: translation.x, y: translation.y)
+        pan.setTranslation(.zero, in: view)
     }
 }
