@@ -11,15 +11,20 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
+    let window: UIWindow = {
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        window.rootViewController = SingleAnimationPlayerViewController(nameOfAnimation: "MD Logo Animation")
+        return window
+    }()
     
     func applicationDidFinishLaunching(_ application: UIApplication) {
         print("Document Path: %@", FAQ.File.documentPath)
+        window.makeKeyAndVisible()
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         print("\(#function) \(url) \(options)")
-        guard let rootViewController = window?.rootViewController else {
+        guard let rootViewController = window.rootViewController else {
             assertionFailure("\(#function) `rootViewController` is nil")
             return false
         }
