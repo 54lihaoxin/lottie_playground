@@ -63,10 +63,14 @@ private extension SingleAnimationPlayerViewController {
         
         // pinch
         animationView.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(_:))))
+        
+        // rotate
+        animationView.addGestureRecognizer(UIRotationGestureRecognizer(target: self, action: #selector(handleRotate(_:))))
     }
 }
 
 // MARK: - user interaction
+// Inspired by https://www.raywenderlich.com/433-uigesturerecognizer-tutorial-getting-started
 
 private extension SingleAnimationPlayerViewController {
     
@@ -95,5 +99,14 @@ private extension SingleAnimationPlayerViewController {
         }
         pinchingView.transform = pinchingView.transform.scaledBy(x: pinch.scale, y: pinch.scale)
         pinch.scale = 1
+    }
+    
+    @objc func handleRotate(_ rotate: UIRotationGestureRecognizer) {
+        guard let rotatingView = rotate.view else {
+            assertionFailure("\(#function) rotating view is nil")
+            return
+        }
+        rotatingView.transform = rotatingView.transform.rotated(by: rotate.rotation)
+        rotate.rotation = 0
     }
 }
