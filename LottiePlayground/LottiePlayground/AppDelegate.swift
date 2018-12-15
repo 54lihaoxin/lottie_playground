@@ -16,4 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidFinishLaunching(_ application: UIApplication) {
         print("Document Path: %@", FAQ.File.documentPath)
     }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        print("\(#function) \(url) \(options)")
+        guard let rootViewController = window?.rootViewController else {
+            assertionFailure("\(#function) `rootViewController` is nil")
+            return false
+        }
+        
+        return InboxFileHandler.handleInboxFileUrl(url, inRootViewController: rootViewController)
+    }
 }
